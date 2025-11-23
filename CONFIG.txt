@@ -1,0 +1,23 @@
+# Netbeans + Tomcat
+
+Menu: Tools/Servers/
+Add Server
+Apache Tomcat
+Next
+Server Location: /opt/apache-tomcat10
+Username: admin ou root
+senha: admin ou admin
+Create user if does not exist: True
+Finish
+Close
+
+# Commit & Push
+git config --global user.name "Maria Eduarda Zanetti Moro"
+git config --global user.email "eduarda.zanetti@aluno.ifsp.edu.br"
+
+git add .
+git status
+git commit -m 'Configuração Inicial do Projeto'
+git push origin master
+username: DudaZTy
+senha: ...
