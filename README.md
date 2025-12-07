@@ -7,14 +7,6 @@
 
 Sistema web completo para gestão de eventos, categorias, ingressos e usuários desenvolvido como trabalho prático da disciplina DSW1.
 
-## 📋 Índice
-
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Funcionalidades](#-funcionalidades)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Instalação e Configuração](#-instalação-e-configuração)
-- [Desenvolvedor](#-desenvolvedor)
-
 ## 🎯 Sobre o Projeto
 
 O **Sistema de Gestão de Eventos** é uma aplicação web desenvolvida em Java com JSP que permite o gerenciamento completo de eventos, desde o cadastro até a venda de ingressos. O sistema implementa controle de acesso por níveis de privilégio, garantindo que cada tipo de usuário tenha acesso apenas às funcionalidades pertinentes ao seu perfil.
