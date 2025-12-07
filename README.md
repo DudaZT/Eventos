@@ -12,10 +12,7 @@ Sistema web completo para gestão de eventos, categorias, ingressos e usuários 
 - [Sobre o Projeto](#-sobre-o-projeto)
 - [Funcionalidades](#-funcionalidades)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Estrutura do Banco de Dados](#-estrutura-do-banco-de-dados)
 - [Instalação e Configuração](#-instalação-e-configuração)
-- [Arquitetura do Sistema](#-arquitetura-do-sistema)
-- [Telas do Sistema](#-telas-do-sistema)
 - [Desenvolvedor](#-desenvolvedor)
 
 ## 🎯 Sobre o Projeto
