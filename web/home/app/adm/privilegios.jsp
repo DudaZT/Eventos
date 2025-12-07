@@ -11,53 +11,182 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-        <title>Tipo Usuário</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+        <title>EventPass - Privilégios</title>
     </head>
-    <body class = "container-fluid">
+    <body class="bg-light">
         <%@ include file="/home/app/modulos.jsp" %>
+        
         <% ArrayList<Privilegios> dados = new Privilegios().getAllTableEntities(); %>
-        <h1 class="mt-5">Privilégios</h1>
-        <table class="table table-striped table-bordered">
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Eventos</th>
-                <th>Ingressos</th>
-                <th>Usuários</th>
-                <th>Alterar</th>
-                <th>Excluir</th>
-            </tr>
+        
+        <div class="container mt-4">
+            <!-- Cabeçalho da página -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 mb-0">
+                        <i class="bi bi-shield-check text-danger me-2"></i>
+                        Gerenciar Privilégios
+                    </h1>
+                    <p class="text-muted mb-0">Configure os níveis de acesso dos usuários</p>
+                </div>
+                <a href="<%= request.getContextPath() %>/home/app/adm/privilegios_form.jsp?action=create" 
+                   class="btn text-white bg-primary">
+                    <i class="bi bi-plus-circle me-1"></i>Novo Privilégio
+                </a>
+            </div>
             
-            <% for(Privilegios tp : dados) { %>
-            <tr>
-                <td><%= tp.getId() %></td>
-                <td><%= tp.getNome() %></td>
-                <td><%= tp.getDescricao()!= null ? tp.getDescricao(): "-"  %></td>
-                <td><%= tp.getModuloEventos()%></td>
-                <td><%= tp.getModuloIngressos()%></td>
-                <td><%= tp.getModuloUsuarios()%></td>
-                <td><a href="<%= request.getContextPath() %>/home/app/adm/privilegios_form.jsp?action=update&id=<%= tp.getId() %>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                    </svg>
-                    </a>
-                </td>
-                <td><a href="<%=request.getContextPath()%>/home?action=delete&id=<%= tp.getId() %>&task=privilegios" onclick="return confirm('Deseja realmente excluir Privilégio: <%= tp.getId() %> (<%= tp.getNome() %>) ?')">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg>
-                    </a>
-                </td>
-            </tr>
-                           
-            <% } %>
-        </table>
-        <br>
-        <a href="<%= request.getContextPath() %>/home/app/adm/privilegios_form.jsp?action=create">Adicionar</a>
+            <!-- Card da tabela -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-bottom py-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h5 class="mb-0">
+                                <i class="bi bi-list-check me-2 text-primary"></i>
+                                Lista de Privilégios
+                            </h5>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <span class="badge bg-light text-dark border">
+                                <i class="bi bi-grid-3x3-gap me-1"></i>
+                                <%= dados.size() %> registro(s)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-borderless mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center align-middle">ID</th>
+                                    <th class="align-middle">Nome</th>
+                                    <th class="align-middle">Descrição</th>
+                                    <th class="text-center align-middle">Eventos</th>
+                                    <th class="text-center align-middle">Ingressos</th>
+                                    <th class="text-center align-middle">Usuários</th>
+                                    <th class="text-center align-middle">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(Privilegios tp : dados) { %>
+                                <tr class="border-top">
+                                    <td class="text-center align-middle">
+                                        <span class="badge bg-secondary rounded-pill">
+                                            <%= tp.getId() %>
+                                        </span>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="fw-bold"><%= tp.getNome() %></div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <%= tp.getDescricao() != null ? tp.getDescricao() : "-" %>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <% if(tp.getModuloEventos().equals("S")) { %>
+                                            <span class="badge bg-success rounded-pill">
+                                                <i class="bi bi-check-circle"></i>
+                                            </span>
+                                        <% } else { %>
+                                            <span class="badge bg-danger rounded-pill">
+                                                <i class="bi bi-x-circle"></i>
+                                            </span>
+                                        <% } %>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <% if(tp.getModuloIngressos().equals("S")) { %>
+                                            <span class="badge bg-success rounded-pill">
+                                                <i class="bi bi-check-circle"></i>
+                                            </span>
+                                        <% } else { %>
+                                            <span class="badge bg-danger rounded-pill">
+                                                <i class="bi bi-x-circle"></i>
+                                            </span>
+                                        <% } %>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <% if(tp.getModuloUsuarios().equals("S")) { %>
+                                            <span class="badge bg-success rounded-pill">
+                                                <i class="bi bi-check-circle"></i>
+                                            </span>
+                                        <% } else { %>
+                                            <span class="badge bg-danger rounded-pill">
+                                                <i class="bi bi-x-circle"></i>
+                                            </span>
+                                        <% } %>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <div class="btn-group" role="group">
+                                            <a href="<%= request.getContextPath() %>/home/app/adm/privilegios_form.jsp?action=update&id=<%= tp.getId() %>" 
+                                               class="btn btn-outline-primary btn-sm"
+                                               title="Editar">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a href="<%=request.getContextPath()%>/home?action=delete&id=<%= tp.getId() %>&task=privilegios" 
+                                               onclick="return confirm('Deseja realmente excluir Privilégio: <%= tp.getId() %> (<%= tp.getNome() %>) ?')"
+                                               class="btn btn-outline-danger btn-sm"
+                                               title="Excluir">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card-footer bg-white border-top py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="<%= request.getContextPath() %>/home/app/menu.jsp" 
+                               class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i>Voltar ao Menu
+                            </a>
+                        </div>
+                        <div>
+                            <span class="text-muted small">
+                                <i class="bi bi-info-circle me-1"></i>
+                                Clique nos ícones para editar ou excluir
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cards informativos -->
+            <div class="row mt-4">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100">
+                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                            <i class="bi bi-calendar-event text-success fs-1 mb-3"></i>
+                            <h6 class="card-title fw-bold">Eventos e Categorias</h6>
+                            <p class="card-text text-muted small">Permite gerenciar eventos e categorias</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100">
+                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                            <i class="bi bi-ticket-detailed text-warning fs-1 mb-3"></i>
+                            <h6 class="card-title fw-bold">Ingressos</h6>
+                            <p class="card-text text-muted small">Permite vender e controlar ingressos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                            <i class="bi bi-people text-primary fs-1 mb-3"></i>
+                            <h6 class="card-title fw-bold">Usuários</h6>
+                            <p class="card-text text-muted small">Permite gerenciar usuários e privilégios</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

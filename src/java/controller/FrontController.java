@@ -328,7 +328,13 @@ public class FrontController extends HttpServlet {
 
         cv.setNome(nome);
         cv.setLocal(local);
-        cv.setDataEvento(data_evento);
+        
+        if( data_evento.equals("") ) {
+            cv.setDataEvento(null);
+        } else {
+            cv.setDataEvento(data_evento);
+        }
+
         cv.setPreco(preco);
         cv.setCapacidadeMaxima(capacidade_maxima);
         cv.setDescricao(descricao);

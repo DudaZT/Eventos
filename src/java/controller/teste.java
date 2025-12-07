@@ -28,7 +28,7 @@ public class teste {
 
         String senhaSal = userId + senha + userId / 2;
         
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        MessageDigest md = MessageDigest.getInstance("SHA-512");
         byte[] hashBytes = md.digest(senhaSal.getBytes("UTF-8"));
         
         String hash = new BigInteger(1, hashBytes).toString(16);
